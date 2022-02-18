@@ -4,7 +4,7 @@ ADD . /app
 WORKDIR /app
 
 RUN apk add --no-cache --update bash npm curl tar
-RUN bash metawrite.sh
+RUN npm run metawrite
 
 FROM node:14-alpine as build-env
 COPY --from=package-env /app /app
