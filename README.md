@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" />
 </a>
 
-# SvelteKit-Appwrite Starter Template
+# SvelteKit Metawrite Starter Template
 
 Everything you need to build a SvelteKit project powered with Appwrite backend, starter powered by [Increasio](https://increas.io/).
 
@@ -65,5 +65,39 @@ docker-compose up --build
 ```
 
 This is a good option for deployment, because starter template has all required configs to automatically install newest version of `metawrite`, all dependencies and start SSR server using Node.
+
+# Appwrite and SvelteKit Combo
+
+You can add this template to your Appwrite Server configuration by pasting following on top of your Appwrite's `docker-compose.yml` services:
+
+```yml
+services:
+  frontend:
+    image: koodeau/sveltekit-metawrite
+    container_name: frontend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      VITE_SITE_URL: ${VITE_SITE_URL}
+      VITE_ENDPOINT_URL: ${VITE_ENDPOINT_URL}
+      VITE_PROJECT_ID: ${VITE_PROJECT_ID}
+      VITE_LOCALE: ${VITE_LOCALE}
+    #   Add more env variables here
+    volumes:
+      - ./app:/srv/frontend
+    ports:
+      - "3000:3000"
+```
+
+And add following to your Appwrite's `.env` file:
+
+```
+VITE_SITE_URL=localhost
+VITE_ENDPOINT_URL=http://localhost/v1
+VITE_PROJECT_ID=example
+VITE_LOCALE=en
+```
+
+> Don't forget to change values to match your server configuration.
 
 > To deploy your app if you're not using Docker, you may need to install another [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
