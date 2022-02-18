@@ -61,7 +61,7 @@ You can preview the production build with `npm run preview`.
 If you need build command:
 
 ```bash
-docker-compose -f docker-compose.yml up --build
+docker-compose up --build
 ```
 
 This is a good option for deployment, because starter template has all required configs to automatically install newest version of `metawrite`, all dependencies and start SSR server using Node.
