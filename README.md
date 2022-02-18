@@ -58,6 +58,12 @@ You can preview the production build with `npm run preview`.
 
 ## Building with Docker
 
+If you need build command:
+
+```bash
+docker-compose -f docker-compose.yml up --build
+```
+
 This is a good option for deployment, because starter template has all required configs to automatically install newest version of `metawrite`, all dependencies and start SSR server using Node.
 
 > To deploy your app if you're not using Docker, you may need to install another [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
